@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: #252525;
+    justify-content: center;
+}
+
+main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 12px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 12px 0;
+    padding-bottom: 12px;
+    color: #FFF;
+    overflow: auto;
+}
+
+input:focus {
+    outline: none;
+}
+
+input {
+    padding: 12px;
+    border-radius: 12px;
+    background: #09FF21;
+    border: none;
+}
