@@ -1,8 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 import { getDatabase, ref, onChildAdded, set } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -28,10 +26,8 @@ const chatRef = ref(db, '/chat');
 onChildAdded(chatRef, function (data) {
 
     // Create message element and append to list element
-    console.log("testing, testing");
-
     const message = document.createElement("li");
-    message.innerText = data.val();
+    message.innerText = new Date(data.key).toLocaleString("fi-FI") + " - " + data.val();
     list.appendChild(message);
 
 });
@@ -44,7 +40,7 @@ input.addEventListener("keypress", function (event) {
     if (event.key == "Enter") {
 
         // Create "unique" id for message
-        const messageId = Date.now();
+        const messageId = new Date().toUTCString();
 
         // Send to database
         set(ref(db, 'chat/' + messageId), input.value);
